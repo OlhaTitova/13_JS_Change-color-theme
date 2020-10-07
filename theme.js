@@ -7,24 +7,32 @@ let link = document.querySelector('#theme-link');
 btn.addEventListener('click', () => { changeTheme() });
 
 function changeTheme() {
-    let orangeTheme = './css/theme.css';
+
+
+    let newTheme = './css/theme.css';
     let noTheme = '';
 
     let currTheme = link.getAttribute('href');
     let theme = '';
 
-    if (currTheme === orangeTheme) {
+    let themeLS = localStorage.getItem('theme');
+    localStorage.setItem('theme', newTheme);
+
+
+    if (themeLS !== null && currTheme === newTheme) {
         currTheme = noTheme;
         theme = '';
+        localStorage.removeItem('theme');
+
     } else {
-        currTheme = orangeTheme;
+        currTheme = newTheme;
         theme = 'theme';
+        localStorage.setItem('theme', newTheme);
+
     }
 
     link.setAttribute('href', currTheme);
 
-    theme = localStorage.getItem('theme');
-    localStorage.setItem('theme', currTheme);
 
 
 }
