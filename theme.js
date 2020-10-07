@@ -23,8 +23,8 @@ function changeTheme() {
 
     link.setAttribute('href', currTheme);
 
-    // save(theme);
-    currentTheme = localStorage.getItem('theme');
+    theme = localStorage.getItem('theme');
+    localStorage.setItem('theme', currTheme);
 
 
 }
