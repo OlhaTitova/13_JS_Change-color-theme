@@ -1,40 +1,23 @@
 'use strict';
 
+document.body.onload = () => {
 
-let btn = document.querySelector('.theme-button');
-let link = document.querySelector('#theme-link');
-
-btn.addEventListener('click', () => { changeTheme() });
-
-function changeTheme() {
+    document.documentElement.setAttribute('theme', localStorage.getItem('theme'));
 
 
-    let newTheme = './css/theme.css';
-    let noTheme = '';
+    const toggleBtn = document.querySelector('#toggle-theme');
+    console.log(toggleBtn);
 
-    let currTheme = link.getAttribute('href');
-    let theme = '';
+    toggleBtn.addEventListener('click', e => {
 
-    let themeLS = localStorage.getItem('theme');
-    localStorage.setItem('theme', newTheme);
+        if (localStorage.getItem('theme') !== null) {
+            localStorage.removeItem('theme');
+            document.documentElement.removeAttribute('theme');
 
+        } else {
+            localStorage.setItem('theme', 'orange-theme');
+            document.documentElement.setAttribute('theme', 'orange-theme');
+        }
 
-    if (themeLS !== null && currTheme === newTheme) {
-        currTheme = noTheme;
-        theme = '';
-        localStorage.removeItem('theme');
-
-    } else {
-        currTheme = newTheme;
-        theme = 'theme';
-        localStorage.setItem('theme', newTheme);
-
-    }
-
-    link.setAttribute('href', currTheme);
-
-
-
+    });
 }
-
-
