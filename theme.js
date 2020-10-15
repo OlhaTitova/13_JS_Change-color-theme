@@ -1,8 +1,8 @@
 'use strict';
 
-document.body.onload = () => {
+document.documentElement.setAttribute('data-theme', localStorage.getItem('theme'));
 
-    document.documentElement.setAttribute('theme', localStorage.getItem('theme'));
+document.body.onload = () => {
 
     const toggleBtn = document.querySelector('#toggle-theme');
 
@@ -10,11 +10,11 @@ document.body.onload = () => {
 
         if (localStorage.getItem('theme') !== null) {
             localStorage.removeItem('theme');
-            document.documentElement.removeAttribute('theme');
+            document.documentElement.removeAttribute('data-theme');
 
         } else {
             localStorage.setItem('theme', 'orange-theme');
-            document.documentElement.setAttribute('theme', 'orange-theme');
+            document.documentElement.setAttribute('data-theme', 'orange-theme');
         }
 
     });

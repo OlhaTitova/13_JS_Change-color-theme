@@ -8,7 +8,7 @@
    --main-hue: var(--green);
 }
 
-:root[theme='orange-theme'] {
+:root[data-theme='orange-theme'] {
     --green:149;
     --orange: 6;
     --main-hue: var(--orange);
